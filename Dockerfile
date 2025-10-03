@@ -1,8 +1,12 @@
-FROM serversideup/php:8.3-fpm-nginx
+FROM serversideup/php:8.2-fpm-nginx
+
+# Nainštalujeme curl pre healthcheck
+USER root
+RUN apt-get update && apt-get install -y curl && apt-get clean
 
 WORKDIR /var/www/html
 
-# Najprv vytvoríme priečinky s správnymi oprávneniami
+# Vytvoríme priečinky s správnymi oprávneniami
 RUN mkdir -p storage/logs storage/framework/sessions storage/framework/views storage/framework/cache bootstrap/cache && \
     chown -R www-data:www-data storage bootstrap/cache && \
     chmod -R 775 storage bootstrap/cache
@@ -10,13 +14,12 @@ RUN mkdir -p storage/logs storage/framework/sessions storage/framework/views sto
 # Skopírujeme aplikáciu
 COPY --chown=www-data:www-data . .
 
-# Nainštalujeme dependencies BEZ spúšťania post-install scriptov
+# Nainštalujeme dependencies
 RUN composer install --no-dev --optimize-autoloader --no-scripts && \
     composer dump-autoload --optimize
 
-# Nastavíme oprávnenia znova po kopírovaní
+# Nastavíme oprávnenia
 RUN chown -R www-data:www-data /var/www/html && \
     chmod -R 775 storage bootstrap/cache
 
-# Prepneme sa na www-data užívateľa
 USER www-data
