@@ -82,6 +82,13 @@ When creating this spec from a user prompt:
 - **[Entity 1]**: [What it represents, key attributes without implementation]
 - **[Entity 2]**: [What it represents, relationships to other entities]
 
+### API Requirements *(include if feature exposes API endpoints)*
+- **Endpoint**: [HTTP method and path, e.g., POST /api/v1/users]
+  - **Purpose**: [What it does]
+  - **Input**: [Request structure without implementation details]
+  - **Output**: [Response structure: `{data, meta, errors}` format]
+  - **Status Codes**: [Expected HTTP status codes]
+
 ---
 
 ## Review & Acceptance Checklist

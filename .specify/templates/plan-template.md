@@ -47,7 +47,35 @@
 ## Constitution Check
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+### I. Test-Driven Development
+- [ ] Tests will be written and approved before implementation begins
+- [ ] Contract tests planned for all API endpoints
+- [ ] Integration tests planned for user stories
+- [ ] Unit tests planned for business logic
+
+### II. API-First Design
+- [ ] OpenAPI/Swagger specifications will be created before implementation
+- [ ] RESTful conventions followed (HTTP methods, status codes, resource naming)
+- [ ] JSON response structure: `{data, meta, errors}`
+- [ ] API versioning strategy defined (`/api/v1/`)
+
+### III. Model Integrity
+- [ ] Database validation in migrations (constraints, foreign keys, indexes)
+- [ ] Application validation in FormRequest classes
+- [ ] Business logic encapsulated in model methods
+- [ ] Eloquent relationships defined properly
+
+### IV. Service Layer Architecture
+- [ ] Controllers handle HTTP concerns only
+- [ ] Business logic in dedicated service classes
+- [ ] Services use constructor injection for testability
+- [ ] Action classes for single-responsibility operations
+
+### V. Observability
+- [ ] Structured logging planned for all operations
+- [ ] Request/response logging for API endpoints
+- [ ] Exception tracking with context
+- [ ] Performance monitoring for slow queries (>100ms)
 
 ## Project Structure
 
@@ -216,4 +244,4 @@ directories captured above]
 - [ ] Complexity deviations documented
 
 ---
-*Based on Constitution v2.1.1 - See `/memory/constitution.md`*
+*Based on Constitution v1.0.0 - See `.specify/memory/constitution.md`*
